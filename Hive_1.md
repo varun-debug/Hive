@@ -1,10 +1,10 @@
-#commands to show databases 
+# commands to show databases 
 show databases;
 
-#create database
+# create database
 create database hive_db;
 
-#use database
+# use database
 use hive_db;
 
 #command to show tables
