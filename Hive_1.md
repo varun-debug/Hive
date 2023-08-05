@@ -47,3 +47,30 @@ create external table department_data_external
     row format delimited
     fields terminated by ','
     location '/input_data/';
+
+# create array 
+create table employee
+     (
+     emp_id int,
+     name string,
+     skills array<string>
+     )
+     row format delimited
+     fields terminated by ','
+     collection items terminated by ':';
+
+# to see the column names used in hive
+set hive.cli.print.header=true;
+
+# use of array to show 1st element of the col
+ select name,
+    skills[0] as Primary_Skill
+    from employee;
+
+# multiple operation like sort or contains in array col
+select emp_id,
+     name,
+     size(skills) as total_size,
+     array_contains(skills,"HADOOP") as knows_hadoop,
+     sort_array(skills) as sorted_skills
+     from employee;
