@@ -36,4 +36,14 @@ load data local inpath 'file:///config/workspace/depart_data.csv' into table dep
 # Load data from hdfs
 load data inpath '/tmp/depart_data.csv' into table department_data;
 
-#
+# command to create external tables
+create external table department_data_external
+    (
+    dept_id int,
+    dept_name string,
+    manager_id int,
+    salary int
+     )
+    row format delimited
+    fields terminated by ','
+    location '/input_data/';
