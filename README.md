@@ -1,1 +1,1 @@
-# Hive
+# Hive commands to practice
