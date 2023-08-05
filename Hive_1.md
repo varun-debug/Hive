@@ -48,7 +48,7 @@ create external table department_data_external
     fields terminated by ','
     location '/input_data/';
 
-# create array 
+# create array(array_data.csv)
 create table employee
      (
      emp_id int,
@@ -74,3 +74,29 @@ select emp_id,
      array_contains(skills,"HADOOP") as knows_hadoop,
      sort_array(skills) as sorted_skills
      from employee;
+
+# create map(map_data.csv)
+create table employee_map_data
+     (
+     id int,
+     name string,
+     details map<string,string>
+     )
+     row format delimited
+     fields terminated by ','
+     collection items terminated by '|'
+     map keys terminated by ':';
+     
+# operation on map to show the gender 
+select id,
+     name,
+     details["gender"] as emp_gender
+     from employee_map_data;
+
+# more operations on map
+select id,
+     name,
+     size(details) as details_size,
+     map_keys(details) as disnt_map_keys,
+     map_values(details) as disnt_map_values
+     from employee_map_data;
