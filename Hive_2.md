@@ -36,3 +36,11 @@ create table json_table
 
 # Operation on json 
 select skills[0] as primary_skills from json_table;
+
+# link to download jar file
+https://repo1.maven.org/maven2/org/apache/hive/hcatalog/hive-hcatalog-core/0.14.0/
+
+# add jar file to hive shell
+add jar file:///config/workspace/hive-hcatalog-core-0.14.0.jar;
+
+# 
