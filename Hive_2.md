@@ -24,3 +24,15 @@ create table csv_table
      )
      stored as textfile
      tblproperties ("skip.header.line.count"="1");
+
+# create the table for json serde file(json_file.json) no need to give extra collections or properties for json serde it automatically reconizes the format 
+create table json_table
+     (
+     name string,
+     id int,
+     skills array<string>)
+     row format serde 'org.apache.hive.hcatalog.data.JsonSerDe'
+     stored as textfile;
+
+# Operation on json 
+select skills[0] as primary_skills from json_table;
