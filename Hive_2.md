@@ -10,7 +10,7 @@ create table sales_data_v2
 # Create the backup copy of the table
 create table sales_data_v2_bkup as select * from sales_data_v2;
 
-# create the table using serde propertices(csv_file.csv)
+# create the table using csv tab serde along with the properties(csv_file.csv)
 create table csv_table
      (
      name string,
