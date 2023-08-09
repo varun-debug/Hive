@@ -43,4 +43,22 @@ https://repo1.maven.org/maven2/org/apache/hive/hcatalog/hive-hcatalog-core/0.14.
 # add jar file to hive shell
 add jar file:///config/workspace/hive-hcatalog-core-0.14.0.jar;
 
-# 
+# store in the parquet format
+ create table sales_data_v2
+     (
+     p_type string,
+     total_sales int
+     )
+     row format delimited 
+     fields terminated by ',';
+
+load data local inpath 'file:///config/workspace/sales_data_raw.csv' into table sales_data_v2;
+
+create table sales_data_pq_final
+     (
+     p_type string,
+     total_sales int
+     )
+     stored as parquet;
+
+from sales_data_v2 insert overwrite table sales_data_pq_final select *;
